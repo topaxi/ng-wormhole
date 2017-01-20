@@ -1,0 +1,33 @@
+{
+  "name": "angular-wormhole",
+  "version": "1.0.0",
+  "description": "Render any child view somewhere else on the page.",
+  "main": "angular-wormhole.module.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topaxi/angular-wormhole.git"
+  },
+  "keywords": [
+    "angular",
+    "elsewhere",
+    "wormhole",
+    "portal"
+  ],
+  "author": "Damian Senn <damian.senn@topaxi.codes>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/topaxi/angular-wormhole/issues"
+  },
+  "homepage": "https://github.com/topaxi/angular-wormhole#readme",
+  "peerDependencies": {
+    "@angular/core": "^2.0.0",
+    "typescript": "^2.0.0"
+  },
+  "devDependencies": {
+    "@angular/core": "^2.0.0",
+    "typescript": "^2.0.0"
+  }
+}
