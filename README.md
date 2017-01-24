@@ -41,9 +41,9 @@ index.html
 In a component template:
 
 ```html
-<angular-wormhole to="#wormhole-target">
+<ng-wormhole to="#wormhole-target">
   <my-popover>...</my-popover>
-</angular-wormhole>
+</ng-wormhole>
 ```
 
 The `<my-popover>` component will then be rendered in the `#wormhole-target`

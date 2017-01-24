@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'angular-wormhole',
+  selector: 'ng-wormhole,angular-wormhole',
   template: '<ng-content></ng-content>',
   styles: [`:host { display: none; }`]
 })
