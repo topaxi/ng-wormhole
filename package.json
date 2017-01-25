@@ -1,6 +1,6 @@
 {
   "name": "angular-wormhole",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Render any child view somewhere else on the page.",
   "main": "angular-wormhole.module.ts",
   "scripts": {
