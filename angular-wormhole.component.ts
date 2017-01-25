@@ -1,22 +1,39 @@
 import {
   Component,
   Attribute,
+  Input,
   ElementRef,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 
 @Component({
   selector: 'ng-wormhole,angular-wormhole',
   template: '<ng-content></ng-content>',
-  styles: [`:host { display: none; }`]
+  styles: [`
+    :host { display: none; }
+    :host.render-in-place { display: block }
+  `],
+  host: {
+    '[class.render-in-place]': 'renderInPlace'
+  }
 })
-export class AngularWormholeComponent implements AfterViewInit, OnDestroy {
+export class AngularWormholeComponent
+    implements AfterViewInit, OnDestroy, OnChanges {
+  @Input()
+  renderInPlace: boolean = false;
+
+  @Input('to')
+  toInput: string;
+
   private wormholeHeadNode: Node;
   private wormholeFootNode: Node;
+  private initialized: boolean = false;
 
   constructor(
-    @Attribute('to') private to: string,
+    @Attribute('to') private toAttr: string,
     private element: ElementRef
   ) {
     this.wormholeHeadNode = this.createTextNode('');
@@ -24,7 +41,11 @@ export class AngularWormholeComponent implements AfterViewInit, OnDestroy {
   }
 
   get destinationElement(): Element {
-    return document.querySelector(this.to);
+    if (this.renderInPlace) {
+      return this.element.nativeElement;
+    }
+
+    return document.querySelector(this.toInput || this.toAttr);
   }
 
   ngAfterViewInit(): void {
@@ -34,10 +55,18 @@ export class AngularWormholeComponent implements AfterViewInit, OnDestroy {
     );
     this.element.nativeElement.appendChild(this.wormholeFootNode);
     this.appendToDestination();
+    this.initialized = true;
   }
 
   ngOnDestroy(): void {
     this.removeRange(this.wormholeHeadNode, this.wormholeFootNode);
+    this.initialized = false;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.initialized) {
+      this.appendToDestination();
+    }
   }
 
   private appendToDestination() {

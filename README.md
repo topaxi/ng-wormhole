@@ -50,6 +50,37 @@ The `<my-popover>` component will then be rendered in the `#wormhole-target`
 element, it will also automatically cleaned up once your component will be
 destroyed.
 
+### Attributes
+
+*to: selector*
+Which element to append to.
+
+```html
+<ng-wormhole to="#wormhole-target">
+  <my-popover>...</my-popover>
+</ng-wormhole>
+```
+
+### Inputs
+
+*to: selector*
+Which element to append to.
+
+```html
+<ng-wormhole [to]="'#wormhole-target'">
+  <my-popover>...</my-popover>
+</ng-wormhole>
+```
+
+*renderInPlace: boolean = false*
+Should the component render its children in place?
+
+```html
+<ng-wormhole to="#wormhole-target" [renderInPlace]="true">
+  <my-popover>...</my-popover>
+</ng-wormhole>
+```
+
 # Credits
 
 This component is heavily inspired by
