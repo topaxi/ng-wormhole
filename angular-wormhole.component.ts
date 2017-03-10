@@ -91,7 +91,10 @@ export class AngularWormholeComponent
     return document.createTextNode(text);
   }
 
-  private appendRange(destinationElement, firstNode, lastNode): void {
+  private appendRange(
+      destinationElement: Element,
+      firstNode: Node,
+      lastNode: Node): void {
     while (firstNode) {
       destinationElement.insertBefore(firstNode, null);
       firstNode = firstNode !== lastNode ?
@@ -100,7 +103,7 @@ export class AngularWormholeComponent
     }
   }
 
-  private removeRange(firstNode, lastNode) {
+  private removeRange(firstNode: Node, lastNode: Node) {
     let node = lastNode;
 
     do {
