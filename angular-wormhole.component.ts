@@ -6,7 +6,8 @@ import {
   AfterViewInit,
   OnDestroy,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  HostBinding
 } from '@angular/core';
 
 @Component({
@@ -15,22 +16,19 @@ import {
   styles: [`
     :host { display: none; }
     :host.render-in-place { display: block }
-  `],
-  host: {
-    '[class.render-in-place]': 'renderInPlace'
-  }
+  `]
 })
-export class AngularWormholeComponent
-    implements AfterViewInit, OnDestroy, OnChanges {
+export class AngularWormholeComponent implements AfterViewInit, OnDestroy, OnChanges {
+  @HostBinding('class.render-in-place')
   @Input()
-  renderInPlace: boolean = false;
+  renderInPlace = false;
 
-  @Input('to')
-  toInput: string;
+  @Input()
+  to: string;
 
   private wormholeHeadNode: Node;
   private wormholeFootNode: Node;
-  private initialized: boolean = false;
+  private initialized = false;
 
   constructor(
     @Attribute('to') private toAttr: string,
@@ -45,7 +43,7 @@ export class AngularWormholeComponent
       return this.element.nativeElement;
     }
 
-    return document.querySelector(this.toInput || this.toAttr);
+    return document.querySelector(this.to || this.toAttr);
   }
 
   ngAfterViewInit(): void {
@@ -70,13 +68,13 @@ export class AngularWormholeComponent
   }
 
   private appendToDestination() {
-    let startingActiveElement = this.getActiveElement();
+    const startingActiveElement = this.getActiveElement();
     this.appendRange(
       this.destinationElement,
       this.wormholeHeadNode,
       this.wormholeFootNode
     );
-    let resultingActiveElement = this.getActiveElement();
+    const resultingActiveElement = this.getActiveElement();
     if (startingActiveElement &&
         resultingActiveElement !== startingActiveElement) {
       (startingActiveElement as HTMLElement).focus();
@@ -107,7 +105,7 @@ export class AngularWormholeComponent
     let node = lastNode;
 
     do {
-      let next = node.previousSibling;
+      const next = node.previousSibling;
 
       if (node.parentNode) {
         node.parentNode.removeChild(node);
