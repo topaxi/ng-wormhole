@@ -6,7 +6,8 @@ import {
   AfterViewInit,
   OnDestroy,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  HostBinding
 } from '@angular/core';
 
 @Component({
@@ -15,14 +16,12 @@ import {
   styles: [`
     :host { display: none; }
     :host.render-in-place { display: block }
-  `],
-  host: {
-    '[class.render-in-place]': 'renderInPlace'
-  }
+  `]
 })
 export class AngularWormholeComponent
     implements AfterViewInit, OnDestroy, OnChanges {
   @Input()
+  @HostBinding('class.render-in-place')
   renderInPlace: boolean = false;
 
   @Input('to')
