@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3
+
+- Typing fixes
+
 ## 1.1.2
 
 - Use HostBinding decorator instead of host component property. Thanks @svox1

@@ -6,7 +6,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
   },
   "exclude": ["node_modules"]
 }

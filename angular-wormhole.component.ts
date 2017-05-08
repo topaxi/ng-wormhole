@@ -39,7 +39,7 @@ export class AngularWormholeComponent
     this.wormholeFootNode = this.createTextNode('');
   }
 
-  get destinationElement(): Element {
+  get destinationElement(): Element | null {
     if (this.renderInPlace) {
       return this.element.nativeElement;
     }
@@ -68,10 +68,16 @@ export class AngularWormholeComponent
     }
   }
 
-  private appendToDestination() {
+  private appendToDestination(): void {
     let startingActiveElement = this.getActiveElement();
+    let destinationElement = this.destinationElement;
+
+    if (!destinationElement) {
+      return;
+    }
+
     this.appendRange(
-      this.destinationElement,
+      destinationElement,
       this.wormholeHeadNode,
       this.wormholeFootNode
     );
@@ -94,29 +100,31 @@ export class AngularWormholeComponent
       destinationElement: Element,
       firstNode: Node,
       lastNode: Node): void {
-    while (firstNode) {
-      destinationElement.insertBefore(firstNode, null);
-      firstNode = firstNode !== lastNode ?
-        lastNode.parentNode.firstChild :
+    let currentNode: Node | null = firstNode;
+
+    while (currentNode) {
+      destinationElement.insertBefore(currentNode, null);
+      currentNode = currentNode !== lastNode ?
+        lastNode.parentNode && lastNode.parentNode.firstChild :
         null;
     }
   }
 
   private removeRange(firstNode: Node, lastNode: Node) {
-    let node = lastNode;
+    let currentNode: Node | null = lastNode;
 
     do {
-      let next = node.previousSibling;
+      let next: Node | null = currentNode!.previousSibling;
 
-      if (node.parentNode) {
-        node.parentNode.removeChild(node);
+      if (currentNode.parentNode) {
+        currentNode.parentNode.removeChild(currentNode);
 
-        if (node === firstNode) {
+        if (currentNode === firstNode) {
           break;
         }
       }
 
-      node = next;
-    } while (node);
+      currentNode = next;
+    } while (currentNode);
   }
 }
