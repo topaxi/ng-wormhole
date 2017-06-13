@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/topaxi/angular-wormhole#readme",
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
+    "@angular/core": "^2 || ^4",
     "typescript": "^2.0.0"
   },
   "devDependencies": {
