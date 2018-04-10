@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5
+
+- Typing fixes
+
 ## 1.1.3
 
 - Typing fixes
