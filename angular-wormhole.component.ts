@@ -24,15 +24,14 @@ export class AngularWormholeComponent
   @HostBinding('class.render-in-place')
   renderInPlace: boolean = false;
 
-  @Input('to')
-  toInput: string;
+  @Input()
+  to?: string;
 
   private wormholeHeadNode: Node;
   private wormholeFootNode: Node;
   private initialized: boolean = false;
 
   constructor(
-    @Attribute('to') private toAttr: string,
     private element: ElementRef
   ) {
     this.wormholeHeadNode = this.createTextNode('');
@@ -44,7 +43,11 @@ export class AngularWormholeComponent
       return this.element.nativeElement;
     }
 
-    return document.querySelector(this.toInput || this.toAttr);
+    if (!this.to) {
+      return null;
+    }
+
+    return document.querySelector(this.to);
   }
 
   ngAfterViewInit(): void {
