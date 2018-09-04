@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'ng-wormhole',
+  selector: 'ng-wormhole', // tslint:disable-line
   template: '<ng-content></ng-content>',
   styles: [`
     :host { display: none; }
@@ -21,14 +21,14 @@ export class NgWormholeComponent
     implements AfterViewInit, OnDestroy, OnChanges {
   @Input()
   @HostBinding('class.render-in-place')
-  renderInPlace: boolean = false;
+  renderInPlace = false;
 
   @Input()
   to?: string;
 
   private wormholeHeadNode: Node;
   private wormholeFootNode: Node;
-  private initialized: boolean = false;
+  private initialized = false;
 
   constructor(
     private element: ElementRef
@@ -116,6 +116,7 @@ export class NgWormholeComponent
     let currentNode: Node | null = lastNode;
 
     do {
+      // tslint:disable-next-line
       let next: Node | null = currentNode!.previousSibling;
 
       if (currentNode.parentNode) {
