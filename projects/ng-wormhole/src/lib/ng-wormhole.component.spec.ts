@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
 })
 class TestComponent {}
 
-describe('NgWormholeComponent', () => {
+describe('NgWormholeComponent Acceptance', () => {
   let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async(() => {
@@ -38,5 +38,45 @@ describe('NgWormholeComponent', () => {
     let wormholeContent = fixture.debugElement.query(By.css('ng-wormhole'))
       .nativeElement.innerHTML;
     expect(wormholeContent).toBe('');
+  });
+});
+
+
+
+@Component({
+  selector: 'ngw-test',
+  template: `
+    <div id="target-element"></div>
+    <ng-wormhole to="#target-element" [renderInPlace]="true">
+      <h1>welcome</h1>
+    </ng-wormhole>
+  `
+})
+class TestComponent2 {}
+
+describe('NgWormholeComponent Acceptance renderInPlace', () => {
+  let fixture: ComponentFixture<TestComponent2>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [TestComponent2, NgWormholeComponent]
+    }).compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TestComponent2);
+    fixture.detectChanges();
+  });
+
+  it('should not render into target', () => {
+    let targetContent = fixture.debugElement.query(By.css('#target-element'))
+      .nativeElement.innerHTML;
+    expect(targetContent).toBe('');
+  });
+
+  it('should not be empty', () => {
+    let wormholeContent = fixture.debugElement.query(By.css('ng-wormhole'))
+      .nativeElement.innerHTML;
+    expect(wormholeContent).toBe('<h1>welcome</h1>');
   });
 });

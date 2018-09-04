@@ -1,6 +1,7 @@
-sudo: false
+sudo: required
 language: node_js
 node_js:
+  - "8"
   - "10"
 
 cache:
@@ -8,4 +9,11 @@ cache:
     - $HOME/.yarn-cache
 
 install:
+  - npm install -g @angular/cli
   - yarn install --frozen-lockfile
+
+script:
+  - ng test ng-wormhole --watch=false --code-coverage --browsers ChromeHeadless
+
+addons:
+  chrome: stable
