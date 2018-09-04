@@ -1,4 +1,4 @@
-# NgWormholeApp
+# NgWormhole
 
 This component allows rendering all of its content to be rendered elsewhere on
 the page.
@@ -11,10 +11,10 @@ stacking contexts may interfere with positioning.
 ## Installation
 
 ```bash
-$ yarn add angular-wormhole
+$ yarn add ng-wormhole
 ```
 
-Import `AngularWormholeModule` in your app:
+Import `NgWormholeModule` in your app:
 
 ```typescript
 import { NgModule } from '@angular/core';
