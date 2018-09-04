@@ -1,6 +1,5 @@
 import {
   Component,
-  Attribute,
   Input,
   ElementRef,
   AfterViewInit,
@@ -11,14 +10,14 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'ng-wormhole,angular-wormhole',
+  selector: 'ng-wormhole',
   template: '<ng-content></ng-content>',
   styles: [`
     :host { display: none; }
     :host.render-in-place { display: block }
   `]
 })
-export class AngularWormholeComponent
+export class NgWormholeComponent
     implements AfterViewInit, OnDestroy, OnChanges {
   @Input()
   @HostBinding('class.render-in-place')

@@ -1,14 +1,29 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "noImplicitAny": false,
-    "module": "commonjs",
-    "target": "ES5",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "declaration": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true
-  },
-  "exclude": ["node_modules"]
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "ng-wormhole": [
+        "dist/ng-wormhole"
+      ],
+      "ng-wormhole/*": [
+        "dist/ng-wormhole/*"
+      ]
+    }
+  }
 }

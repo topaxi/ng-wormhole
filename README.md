@@ -1,89 +1,27 @@
-# Angular Wormhole
+# NgWormholeApp
 
-This component allows rendering all of its content to be rendered elsewhere on
-the page.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
-## Why?
+## Development server
 
-Sometimes a dialog or tooltip has to be rendered outside of an element, as CSS
-stacking contexts may interfere with positioning.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Installation
+## Code scaffolding
 
-```bash
-$ yarn add angular-wormhole
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Import `AngularWormholeModule` in your app:
+## Build
 
-```typescript
-import { NgModule } from '@angular/core';
-import { AngularWormholeModule } from 'angular-wormhole';
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-@NgModule({
-  imports: [
-    AngularWormholeModule
-  ]
-})
-export class AppModule {}
-```
+## Running unit tests
 
-### Example usage
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-index.html
-```html
-<body>
-  <my-angular-app></my-angular-app>
-  <div id="wormhole-target"></div>
-</body>
-```
+## Running end-to-end tests
 
-In a component template:
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-```html
-<ng-wormhole to="#wormhole-target">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
+## Further help
 
-The `<my-popover>` component will then be rendered in the `#wormhole-target`
-element, it will also automatically cleaned up once your component will be
-destroyed.
-
-### Attributes
-
-*to: selector*
-Which element to append to.
-
-```html
-<ng-wormhole to="#wormhole-target">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
-
-### Inputs
-
-*to: selector*
-Which element to append to.
-
-```html
-<ng-wormhole [to]="'#wormhole-target'">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
-
-*renderInPlace: boolean = false*
-Should the component render its children in place?
-
-```html
-<ng-wormhole to="#wormhole-target" [renderInPlace]="true">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
-
-# Credits
-
-This component is heavily inspired by
-[ember-wormhole](https://github.com/yapplabs/ember-wormhole).
-Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia,
-@raycohen and others.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
