@@ -52,19 +52,19 @@ describe('NgWormholeComponent Acceptance', () => {
     </ng-wormhole>
   `
 })
-class TestComponent2 {}
+class Test2Component {}
 
 describe('NgWormholeComponent Acceptance renderInPlace', () => {
-  let fixture: ComponentFixture<TestComponent2>;
+  let fixture: ComponentFixture<Test2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent2, NgWormholeComponent]
+      declarations: [Test2Component, NgWormholeComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestComponent2);
+    fixture = TestBed.createComponent(Test2Component);
     fixture.detectChanges();
   });
 
