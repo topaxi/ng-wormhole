@@ -9,12 +9,11 @@ cache:
     - $HOME/.yarn-cache
 
 install:
-  - npm install -g @angular/cli
   - yarn install --frozen-lockfile
 
 script:
-  - npm run lint
-  - ng test ng-wormhole --watch=false --code-coverage --browsers ChromeHeadless
+  - yarn lint
+  - yarn test ng-wormhole --watch=false --code-coverage --browsers ChromeHeadless
 
 addons:
   chrome: stable
