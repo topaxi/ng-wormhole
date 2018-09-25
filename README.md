@@ -21,9 +21,7 @@ import { NgModule } from '@angular/core';
 import { NgWormholeModule } from 'ng-wormhole';
 
 @NgModule({
-  imports: [
-    NgWormholeModule
-  ]
+  imports: [NgWormholeModule]
 })
 export class AppModule {}
 ```
@@ -31,6 +29,7 @@ export class AppModule {}
 ### Example usage
 
 index.html
+
 ```html
 <body>
   <my-angular-app></my-angular-app>
@@ -41,45 +40,30 @@ index.html
 In a component template:
 
 ```html
-<ng-wormhole to="#wormhole-target">
-  <my-popover>...</my-popover>
-</ng-wormhole>
+<my-popover *ngWormhole="'#wormhole-target'">...</my-popover>
 ```
 
 The `<my-popover>` component will then be rendered in the `#wormhole-target`
 element, it will also automatically cleaned up once your component will be
 destroyed.
 
-### Attributes
-
-*to: selector*
-Which element to append to.
-
-```html
-<ng-wormhole to="#wormhole-target">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
-
 ### Inputs
 
-*to: selector*
+_ngWormhole: selector or element_
 Which element to append to.
 
-```html
-<ng-wormhole [to]="'#wormhole-target'">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
+````html
+<div #targetElement id="my-target"></div>
+<my-popover *ngWormhole="targetElement">...</my-popover>
+<!-- or by id/selector -->
+<my-popover *ngWormhole="'#my-target'">...</my-popover>
 
 *renderInPlace: boolean = false*
 Should the component render its children in place?
 
 ```html
-<ng-wormhole to="#wormhole-target" [renderInPlace]="true">
-  <my-popover>...</my-popover>
-</ng-wormhole>
-```
+<my-popover *ngWormholeTo="'#wormhole-target'; renderInPlace: true">...</my-popover>
+````
 
 ## Development server
 
