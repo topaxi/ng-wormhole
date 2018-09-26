@@ -1,5 +1,22 @@
-<div id="destination" style="border: 5px solid green"></div>
+<div id="destination" #dest style="border: 5px solid green"></div>
 
+<div>
+  <button (click)="renderInPlace = !renderInPlace">
+    Toggle renderInPlace ({{renderInPlace}})
+  </button>
 
+  <button (click)="show = !show">
+    <ng-container *ngIf="!show">
+      show {{show}}
+    </ng-container>
+    <ng-container *ngIf="show">
+      hide {{show}}
+    </ng-container>
+  </button>
+</div>
 
-<ng-wormhole to="#destination">I should be rendered inside a green border</ng-wormhole>
+<ng-container *ngIf="show">
+  <ng-container *ngWormhole="dest; renderInPlace: renderInPlace">
+    I should <ng-container *ngIf="renderInPlace">not</ng-container> be rendered inside a green border
+  </ng-container>
+</ng-container>

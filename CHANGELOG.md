@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.0
+
+- Created ngWormhole directive
+- Deprecated ng-wormhole component
+
+## 2.0.0
+
+- Migrated to angular-cli with proper JavaScript build
+
 ## 1.1.5
 
 - Typing fixes
