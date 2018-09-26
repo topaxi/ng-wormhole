@@ -62,7 +62,7 @@ Which element to append to.
 Should the component render its children in place?
 
 ```html
-<my-popover *ngWormholeTo="'#wormhole-target'; renderInPlace: true">...</my-popover>
+<my-popover *ngWormhole="'#wormhole-target'; renderInPlace: true">...</my-popover>
 ````
 
 ## Development server
