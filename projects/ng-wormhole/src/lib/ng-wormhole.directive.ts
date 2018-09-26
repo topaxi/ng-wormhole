@@ -20,7 +20,7 @@ function appendReducer<T extends Node>(target: T, node: Node): T {
 }
 
 @Directive({
-  selector: '[ngWormhole]'
+  selector: '[ngWormhole]' // tslint:disable-line
 })
 export class NgWormholeDirective implements AfterViewInit, OnInit, OnChanges {
   @Input()
