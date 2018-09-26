@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NgWormholeComponent } from './ng-wormhole.component';
 import { Component } from '@angular/core';
 import { NgWormholeDirective } from './ng-wormhole.directive';
 
