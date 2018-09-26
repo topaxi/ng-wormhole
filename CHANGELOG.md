@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+
+- Removed deprecated ng-wormhole component
+
 ## 2.1.0
 
 - Created ngWormhole directive
