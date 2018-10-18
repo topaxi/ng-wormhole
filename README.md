@@ -52,18 +52,19 @@ destroyed.
 _ngWormhole: selector or element_
 Which element to append to.
 
-````html
+```html
 <div #targetElement id="my-target"></div>
 <my-popover *ngWormhole="targetElement">...</my-popover>
 <!-- or by id/selector -->
 <my-popover *ngWormhole="'#my-target'">...</my-popover>
+```
 
-*renderInPlace: boolean = false*
+_renderInPlace: boolean = false_
 Should the component render its children in place?
 
 ```html
 <my-popover *ngWormhole="'#wormhole-target'; renderInPlace: true">...</my-popover>
-````
+```
 
 ## Development server
 
