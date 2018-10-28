@@ -9,7 +9,8 @@ import {
   OnChanges,
   SimpleChanges,
   HostBinding,
-  Inject
+  Inject,
+  OnDestroy
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
