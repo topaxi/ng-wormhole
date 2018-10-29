@@ -1,6 +1,6 @@
 {
   "name": "ng-wormhole",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Render any child view somewhere else on the page.",
   "repository": {
     "type": "git",

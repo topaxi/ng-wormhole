@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- Destroy embedded view on destroy
+
 ## 3.0.0
 
 - Removed deprecated ng-wormhole component

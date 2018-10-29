@@ -23,7 +23,8 @@ function appendReducer<T extends Node>(target: T, node: Node): T {
 @Directive({
   selector: '[ngWormhole]' // tslint:disable-line
 })
-export class NgWormholeDirective implements AfterViewInit, OnInit, OnChanges, OnDestroy {
+export class NgWormholeDirective
+  implements AfterViewInit, OnInit, OnChanges, OnDestroy {
   @Input()
   ngWormholeRenderInPlace = false;
 
@@ -65,13 +66,6 @@ export class NgWormholeDirective implements AfterViewInit, OnInit, OnChanges, On
     );
   }
 
-  ngOnDestroy() {
-    if (this.embeddedViewRef == null) {
-      return;
-    }
-    this.embeddedViewRef.destroy();
-  }
-
   ngAfterViewInit(): void {
     this.appendToDestination();
     this.initialized = true;
@@ -80,6 +74,12 @@ export class NgWormholeDirective implements AfterViewInit, OnInit, OnChanges, On
   ngOnChanges(changes: SimpleChanges): void {
     if (this.initialized) {
       this.appendToDestination();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.embeddedViewRef != null) {
+      this.embeddedViewRef.destroy();
     }
   }
 
